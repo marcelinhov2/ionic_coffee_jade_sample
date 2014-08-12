@@ -6,6 +6,8 @@ args = require('yargs')
   .example('$0 sass', 'Builds sass stylesheets')
   .example('$0 coffee', 'Builds coffee scripts')
   .example('$0 jade', 'Builds jade templates')
+  .example('$0 build', 'Builds everything')
+  .example('$0 watch', 'Watches and builds everything')
   .argv
 
 bower    = require('bower')
@@ -25,8 +27,6 @@ paths =
     './app/scripts/**/*.coffee'
   ]
   views:   ['./app/views/**/*.jade']
-
-gulp.task 'default', ['build']
 
 gulp.task 'sass', (done) ->
   gulp.src(paths.styles)
