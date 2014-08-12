@@ -24,4 +24,4 @@ $ ionic serve
 Based on original Ionic auto-generated sample
 
 ## License
-  See [LICENSE](License)
+  See [LICENSE](LICENSE)
