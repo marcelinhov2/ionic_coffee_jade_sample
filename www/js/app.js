@@ -11,7 +11,7 @@
 
   })();
 
-  angular.module('starter', App());
+  angular.module('starter', new App());
 
 }).call(this);
 
@@ -140,6 +140,35 @@
 }).call(this);
 
 (function() {
+  var App,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  App = (function() {
+    function App($scope, $ionicSideMenuDelegate) {
+      this.$scope = $scope;
+      this.$ionicSideMenuDelegate = $ionicSideMenuDelegate;
+      this.toggleRight = __bind(this.toggleRight, this);
+      this.defineTemplateMethods = __bind(this.defineTemplateMethods, this);
+      this.defineTemplateMethods();
+    }
+
+    App.prototype.defineTemplateMethods = function() {
+      return this.$scope.toggleRight = this.toggleRight;
+    };
+
+    App.prototype.toggleRight = function() {
+      return this.$ionicSideMenuDelegate.toggleRight();
+    };
+
+    return App;
+
+  })();
+
+  angular.module('starter').controller('appController', ['$scope', '$ionicSideMenuDelegate', App]);
+
+}).call(this);
+
+(function() {
   var Dash;
 
   Dash = (function() {
@@ -186,6 +215,34 @@
 }).call(this);
 
 (function() {
+  var Menu;
+
+  Menu = (function() {
+    function Menu($scope) {
+      var i;
+      this.$scope = $scope;
+      this.$scope.data = {
+        items: []
+      };
+      i = 0;
+      while (i < 25) {
+        this.$scope.data.items.push({
+          id: i,
+          label: "Item " + i
+        });
+        i++;
+      }
+    }
+
+    return Menu;
+
+  })();
+
+  angular.module('starter').controller('menuController', ['$scope', Menu]);
+
+}).call(this);
+
+(function() {
   var Sample;
 
   Sample = (function() {
@@ -206,6 +263,26 @@
   })();
 
   angular.module('starter').directive('sample', ['$timeout', 'trackFixtureService', Sample]);
+
+}).call(this);
+
+(function() {
+  var SideMenu;
+
+  SideMenu = (function() {
+    function SideMenu() {
+      return {
+        restrict: 'E',
+        templateUrl: '/templates/directives/side-menu.html',
+        controller: 'sideMenuController'
+      };
+    }
+
+    return SideMenu;
+
+  })();
+
+  angular.module('starter').directive('sideMenu', [SideMenu]);
 
 }).call(this);
 
@@ -261,5 +338,33 @@
   })();
 
   angular.module('starter').service('friendsService', [Friends]);
+
+}).call(this);
+
+(function() {
+  var SideMenu;
+
+  SideMenu = (function() {
+    function SideMenu($scope) {
+      var i;
+      this.$scope = $scope;
+      this.$scope.data = {
+        items: []
+      };
+      i = 0;
+      while (i < 25) {
+        this.$scope.data.items.push({
+          id: i,
+          label: "Item " + i
+        });
+        i++;
+      }
+    }
+
+    return SideMenu;
+
+  })();
+
+  angular.module('starter').controller('sideMenuController', ['$scope', SideMenu]);
 
 }).call(this);
