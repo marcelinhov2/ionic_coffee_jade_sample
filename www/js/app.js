@@ -57,44 +57,28 @@
 
   Routes = (function() {
     function Routes($stateProvider, $urlRouterProvider) {
-      $stateProvider.state('tab', {
-        url: '/tab',
+      $stateProvider.state('sectionmenu', {
+        url: '/section',
         abstract: true,
-        templateUrl: '/templates/tabs.html'
-      }).state('tab.dash', {
-        url: '/dash',
+        templateUrl: '/templates/directives/side-menu.html'
+      }).state('sectionmenu.home', {
+        url: '/home',
         views: {
-          'tab-dash': {
-            templateUrl: '/templates/tab-dash.html',
-            controller: 'dashController'
+          menuContent: {
+            templateUrl: '/templates/views/home.html',
+            controller: 'homeController'
           }
         }
-      }).state('tab.friends', {
-        url: '/friends',
+      }).state('sectionmenu.test', {
+        url: '/test',
         views: {
-          'tab-friends': {
-            templateUrl: '/templates/tab-friends.html',
-            controller: 'friendsController'
-          }
-        }
-      }).state('tab.friend-detail', {
-        url: '/friend/:friendId',
-        views: {
-          'tab-friends': {
-            templateUrl: '/templates/friend-detail.html',
-            controller: 'friendDetailController'
-          }
-        }
-      }).state('tab.account', {
-        url: '/account',
-        views: {
-          'tab-account': {
-            templateUrl: '/templates/tab-account.html',
-            controller: 'accountController'
+          menuContent: {
+            templateUrl: '/templates/views/test.html',
+            controller: 'testController'
           }
         }
       });
-      $urlRouterProvider.otherwise('/tab/dash');
+      $urlRouterProvider.otherwise('/section/home');
     }
 
     return Routes;
@@ -126,20 +110,6 @@
 }).call(this);
 
 (function() {
-  var Account;
-
-  Account = (function() {
-    function Account($scope) {}
-
-    return Account;
-
-  })();
-
-  angular.module('starter').controller('accountController', ['$scope', Account]);
-
-}).call(this);
-
-(function() {
   var App,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -165,124 +135,6 @@
   })();
 
   angular.module('starter').controller('appController', ['$scope', '$ionicSideMenuDelegate', App]);
-
-}).call(this);
-
-(function() {
-  var Dash;
-
-  Dash = (function() {
-    function Dash($scope) {}
-
-    return Dash;
-
-  })();
-
-  angular.module('starter').controller('dashController', ['$scope', Dash]);
-
-}).call(this);
-
-(function() {
-  var FriendDetail;
-
-  FriendDetail = (function() {
-    function FriendDetail($scope, $stateParams, friendsService) {
-      $scope.friend = friendsService.get($stateParams.friendId);
-    }
-
-    return FriendDetail;
-
-  })();
-
-  angular.module('starter').controller('friendDetailController', ['$scope', '$stateParams', 'friendsService', FriendDetail]);
-
-}).call(this);
-
-(function() {
-  var Friends;
-
-  Friends = (function() {
-    function Friends($scope, friendsService) {
-      $scope.friends = friendsService.all();
-    }
-
-    return Friends;
-
-  })();
-
-  angular.module('starter').controller('friendsController', ['$scope', 'friendsService', Friends]);
-
-}).call(this);
-
-(function() {
-  var Menu;
-
-  Menu = (function() {
-    function Menu($scope) {
-      var i;
-      this.$scope = $scope;
-      this.$scope.data = {
-        items: []
-      };
-      i = 0;
-      while (i < 25) {
-        this.$scope.data.items.push({
-          id: i,
-          label: "Item " + i
-        });
-        i++;
-      }
-    }
-
-    return Menu;
-
-  })();
-
-  angular.module('starter').controller('menuController', ['$scope', Menu]);
-
-}).call(this);
-
-(function() {
-  var Sample;
-
-  Sample = (function() {
-    function Sample($timeout, trackFixtureService) {
-      return {
-        restrict: 'A',
-        transclude: false,
-        link: {
-          post: function(scope, element, attrs) {
-            return console.log('Linked');
-          }
-        }
-      };
-    }
-
-    return Sample;
-
-  })();
-
-  angular.module('starter').directive('sample', ['$timeout', 'trackFixtureService', Sample]);
-
-}).call(this);
-
-(function() {
-  var SideMenu;
-
-  SideMenu = (function() {
-    function SideMenu() {
-      return {
-        restrict: 'E',
-        templateUrl: '/templates/directives/side-menu.html',
-        controller: 'sideMenuController'
-      };
-    }
-
-    return SideMenu;
-
-  })();
-
-  angular.module('starter').directive('sideMenu', [SideMenu]);
 
 }).call(this);
 
@@ -342,29 +194,33 @@
 }).call(this);
 
 (function() {
-  var SideMenu;
+  var Home;
 
-  SideMenu = (function() {
-    function SideMenu($scope) {
-      var i;
-      this.$scope = $scope;
-      this.$scope.data = {
-        items: []
-      };
-      i = 0;
-      while (i < 25) {
-        this.$scope.data.items.push({
-          id: i,
-          label: "Item " + i
-        });
-        i++;
-      }
+  Home = (function() {
+    function Home($scope) {
+      console.log('home');
     }
 
-    return SideMenu;
+    return Home;
 
   })();
 
-  angular.module('starter').controller('sideMenuController', ['$scope', SideMenu]);
+  angular.module('starter').controller('homeController', ['$scope', Home]);
+
+}).call(this);
+
+(function() {
+  var Test;
+
+  Test = (function() {
+    function Test($scope) {
+      console.log('test');
+    }
+
+    return Test;
+
+  })();
+
+  angular.module('starter').controller('testController', ['$scope', Test]);
 
 }).call(this);

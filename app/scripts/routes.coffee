@@ -3,39 +3,24 @@ class Routes extends Config
     $stateProvider
 
       # setup an abstract state for the tabs directive
-      .state 'tab',
-        url: '/tab'
+      .state 'sectionmenu',
+        url: '/section'
         abstract: true
-        templateUrl: '/templates/tabs.html'
+        templateUrl: '/templates/directives/side-menu.html'
 
-      # Each tab has its own nav history stack:
-      .state 'tab.dash',
-        url: '/dash'
+      .state 'sectionmenu.home',
+        url: '/home'
         views:
-          'tab-dash':
-            templateUrl: '/templates/tab-dash.html',
-            controller: 'dashController'
+          menuContent:
+            templateUrl: '/templates/views/home.html'
+            controller: 'homeController'
 
-      .state 'tab.friends',
-        url: '/friends'
+      .state 'sectionmenu.test',
+        url: '/test'
         views:
-          'tab-friends':
-            templateUrl: '/templates/tab-friends.html',
-            controller: 'friendsController'
-
-      .state 'tab.friend-detail',
-        url: '/friend/:friendId',
-        views:
-          'tab-friends':
-            templateUrl: '/templates/friend-detail.html',
-            controller: 'friendDetailController'
-
-      .state 'tab.account',
-        url: '/account',
-        views:
-          'tab-account':
-            templateUrl: '/templates/tab-account.html',
-            controller: 'accountController'
+          menuContent:
+            templateUrl: '/templates/views/test.html'
+            controller: 'testController'
 
     # if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/dash')
+    $urlRouterProvider.otherwise('/section/home')
