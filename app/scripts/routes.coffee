@@ -2,6 +2,11 @@ class Routes extends Config
   constructor: ($stateProvider, $urlRouterProvider) ->
     $stateProvider
 
+      .state 'login',
+        url: '/login'
+        templateUrl: '/templates/views/login.html'
+        controller: 'loginController'
+
       # setup an abstract state for the tabs directive
       .state 'sectionmenu',
         url: '/section'
@@ -23,4 +28,4 @@ class Routes extends Config
             controller: 'testController'
 
     # if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/section/home')
+    $urlRouterProvider.otherwise('/login')

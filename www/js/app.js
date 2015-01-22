@@ -57,7 +57,11 @@
 
   Routes = (function() {
     function Routes($stateProvider, $urlRouterProvider) {
-      $stateProvider.state('sectionmenu', {
+      $stateProvider.state('login', {
+        url: '/login',
+        templateUrl: '/templates/views/login.html',
+        controller: 'loginController'
+      }).state('sectionmenu', {
         url: '/section',
         abstract: true,
         templateUrl: '/templates/directives/side-menu.html'
@@ -78,7 +82,7 @@
           }
         }
       });
-      $urlRouterProvider.otherwise('/section/home');
+      $urlRouterProvider.otherwise('/login');
     }
 
     return Routes;
@@ -206,6 +210,22 @@
   })();
 
   angular.module('starter').controller('homeController', ['$scope', Home]);
+
+}).call(this);
+
+(function() {
+  var Login;
+
+  Login = (function() {
+    function Login($scope) {
+      console.log('login');
+    }
+
+    return Login;
+
+  })();
+
+  angular.module('starter').controller('loginController', ['$scope', Login]);
 
 }).call(this);
 
