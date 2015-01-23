@@ -65,20 +65,28 @@
         url: '/section',
         abstract: true,
         templateUrl: '/templates/directives/side-menu.html'
-      }).state('sectionmenu.home', {
-        url: '/home',
+      }).state('sectionmenu.dashboard', {
+        url: '/dashboard',
         views: {
           menuContent: {
-            templateUrl: '/templates/views/home.html',
-            controller: 'homeController'
+            templateUrl: '/templates/views/dashboard.html',
+            controller: 'dashboardController'
           }
         }
-      }).state('sectionmenu.test', {
-        url: '/test',
+      }).state('sectionmenu.transactions', {
+        url: '/transactions',
         views: {
           menuContent: {
-            templateUrl: '/templates/views/test.html',
-            controller: 'testController'
+            templateUrl: '/templates/views/transactions.html',
+            controller: 'transactionsController'
+          }
+        }
+      }).state('sectionmenu.transactionDetail', {
+        url: '/transactionDetail',
+        views: {
+          menuContent: {
+            templateUrl: '/templates/views/transactionDetail.html',
+            controller: 'transactionDetailController'
           }
         }
       });
@@ -198,18 +206,18 @@
 }).call(this);
 
 (function() {
-  var Home;
+  var Dashboard;
 
-  Home = (function() {
-    function Home($scope) {
-      console.log('home');
+  Dashboard = (function() {
+    function Dashboard($scope) {
+      console.log('Dashboard');
     }
 
-    return Home;
+    return Dashboard;
 
   })();
 
-  angular.module('starter').controller('homeController', ['$scope', Home]);
+  angular.module('starter').controller('dashboardController', ['$scope', Dashboard]);
 
 }).call(this);
 
@@ -230,17 +238,33 @@
 }).call(this);
 
 (function() {
-  var Test;
+  var TransactionDetail;
 
-  Test = (function() {
-    function Test($scope) {
-      console.log('test');
+  TransactionDetail = (function() {
+    function TransactionDetail($scope) {
+      console.log('TransactionDetail');
     }
 
-    return Test;
+    return TransactionDetail;
 
   })();
 
-  angular.module('starter').controller('testController', ['$scope', Test]);
+  angular.module('starter').controller('transactionDetailController', ['$scope', TransactionDetail]);
+
+}).call(this);
+
+(function() {
+  var Transactions;
+
+  Transactions = (function() {
+    function Transactions($scope) {
+      console.log('transaction');
+    }
+
+    return Transactions;
+
+  })();
+
+  angular.module('starter').controller('transactionsController', ['$scope', Transactions]);
 
 }).call(this);

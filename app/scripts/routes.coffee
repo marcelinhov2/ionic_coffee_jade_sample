@@ -13,19 +13,26 @@ class Routes extends Config
         abstract: true
         templateUrl: '/templates/directives/side-menu.html'
 
-      .state 'sectionmenu.home',
-        url: '/home'
+      .state 'sectionmenu.dashboard',
+        url: '/dashboard'
         views:
           menuContent:
-            templateUrl: '/templates/views/home.html'
-            controller: 'homeController'
+            templateUrl: '/templates/views/dashboard.html'
+            controller: 'dashboardController'
 
-      .state 'sectionmenu.test',
-        url: '/test'
+      .state 'sectionmenu.transactions',
+        url: '/transactions'
         views:
           menuContent:
-            templateUrl: '/templates/views/test.html'
-            controller: 'testController'
+            templateUrl: '/templates/views/transactions.html'
+            controller: 'transactionsController'
+
+      .state 'sectionmenu.transactionDetail',
+        url: '/transactionDetail'
+        views:
+          menuContent:
+            templateUrl: '/templates/views/transactionDetail.html'
+            controller: 'transactionDetailController'
 
     # if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login')
