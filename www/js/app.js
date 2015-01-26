@@ -107,61 +107,6 @@
 }).call(this);
 
 (function() {
-  var App,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-
-  App = (function() {
-    function App($scope, $rootScope, $timeout, $location, $ionicSideMenuDelegate, $ionicPlatform, $cordovaSplashscreen, localStorageService) {
-      this.$scope = $scope;
-      this.$rootScope = $rootScope;
-      this.$timeout = $timeout;
-      this.$location = $location;
-      this.$ionicSideMenuDelegate = $ionicSideMenuDelegate;
-      this.$ionicPlatform = $ionicPlatform;
-      this.$cordovaSplashscreen = $cordovaSplashscreen;
-      this.localStorageService = localStorageService;
-      this.toggleRight = __bind(this.toggleRight, this);
-      this.defineTemplateMethods = __bind(this.defineTemplateMethods, this);
-      this.defineTemplateMethods();
-      this.init();
-    }
-
-    App.prototype.defineTemplateMethods = function() {
-      return this.$scope.toggleRight = this.toggleRight;
-    };
-
-    App.prototype.init = function() {
-      this.$rootScope.$on("$locationChangeStart", (function(_this) {
-        return function(next, current) {
-          return _this.hasUser();
-        };
-      })(this));
-      return this.$ionicPlatform.ready((function(_this) {
-        return function() {
-          return _this.$cordovaSplashscreen.hide();
-        };
-      })(this));
-    };
-
-    App.prototype.hasUser = function() {
-      if (!this.localStorageService.get('user')) {
-        return this.$location.path("/login");
-      }
-    };
-
-    App.prototype.toggleRight = function() {
-      return this.$ionicSideMenuDelegate.toggleRight();
-    };
-
-    return App;
-
-  })();
-
-  angular.module('starter').controller('appController', ['$scope', '$rootScope', '$timeout', '$location', '$ionicSideMenuDelegate', '$ionicPlatform', '$cordovaSplashscreen', 'localStorageService', App]);
-
-}).call(this);
-
-(function() {
   var SearchTime;
 
   SearchTime = (function() {
@@ -188,6 +133,61 @@
   })();
 
   angular.module('starter').constant('SEARCH_TIME', SearchTime());
+
+}).call(this);
+
+(function() {
+  var App,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  App = (function() {
+    function App($scope, $rootScope, $timeout, $location, $ionicSideMenuDelegate, $ionicPlatform, $cordovaSplashscreen, localStorageService) {
+      this.$scope = $scope;
+      this.$rootScope = $rootScope;
+      this.$timeout = $timeout;
+      this.$location = $location;
+      this.$ionicSideMenuDelegate = $ionicSideMenuDelegate;
+      this.$ionicPlatform = $ionicPlatform;
+      this.$cordovaSplashscreen = $cordovaSplashscreen;
+      this.localStorageService = localStorageService;
+      this.toggleLeft = __bind(this.toggleLeft, this);
+      this.defineTemplateMethods = __bind(this.defineTemplateMethods, this);
+      this.defineTemplateMethods();
+      this.init();
+    }
+
+    App.prototype.defineTemplateMethods = function() {
+      return this.$scope.toggleLeft = this.toggleLeft;
+    };
+
+    App.prototype.init = function() {
+      this.$rootScope.$on("$locationChangeStart", (function(_this) {
+        return function(next, current) {
+          return _this.hasUser();
+        };
+      })(this));
+      return this.$ionicPlatform.ready((function(_this) {
+        return function() {
+          return _this.$cordovaSplashscreen.hide();
+        };
+      })(this));
+    };
+
+    App.prototype.hasUser = function() {
+      if (!this.localStorageService.get('user')) {
+        return this.$location.path("/login");
+      }
+    };
+
+    App.prototype.toggleLeft = function() {
+      return this.$ionicSideMenuDelegate.toggleLeft();
+    };
+
+    return App;
+
+  })();
+
+  angular.module('starter').controller('appController', ['$scope', '$rootScope', '$timeout', '$location', '$ionicSideMenuDelegate', '$ionicPlatform', '$cordovaSplashscreen', 'localStorageService', App]);
 
 }).call(this);
 

@@ -4,7 +4,7 @@ class App extends Controller
     do @init
 
   defineTemplateMethods: =>
-    @$scope.toggleRight = @toggleRight
+    @$scope.toggleLeft = @toggleLeft
 
   init: ->
     @$rootScope.$on "$locationChangeStart", (next, current) =>
@@ -17,5 +17,5 @@ class App extends Controller
     if !@localStorageService.get 'user'
       @$location.path "/login"
 
-  toggleRight: =>
-    do @$ionicSideMenuDelegate.toggleRight
+  toggleLeft: =>
+    do @$ionicSideMenuDelegate.toggleLeft
