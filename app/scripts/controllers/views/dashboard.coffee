@@ -8,13 +8,15 @@ class Dashboard extends Controller
   declare_scope_vars: =>
     @$scope.config = {}
 
-    @$scope.config.searchTime = @localStorageService.get("searchTime") or 0
     @$scope.searchTime = @SEARCH_TIME
-
+    @$scope.config.searchTime = @localStorageService.get("searchTime") or 0
+    
   set_listeners: =>
     _self = @
 
     @$scope.$watch "config.searchTime", (now, then_, scope) =>
+      console.log 'passou por aqui 2'
+
       if now is 0
         ts = Date.now()
         iv = @adminUserService.timeInterval()
@@ -42,8 +44,8 @@ class Dashboard extends Controller
       end_date: end_date
     )
 
-    stats.$promise.then @_parseModel, (why) ->
+    stats.$promise.then @parseModel, (why) ->
       console.warn why
 
-  _parseModel: (model) =>
+  parseModel: (model) =>
     console.log model

@@ -301,7 +301,7 @@
       this.localStorageService = localStorageService;
       this.SEARCH_TIME = SEARCH_TIME;
       this.urlConfigService = urlConfigService;
-      this._parseModel = __bind(this._parseModel, this);
+      this.parseModel = __bind(this.parseModel, this);
       this.define_template_methods = __bind(this.define_template_methods, this);
       this.set_listeners = __bind(this.set_listeners, this);
       this.declare_scope_vars = __bind(this.declare_scope_vars, this);
@@ -312,8 +312,8 @@
 
     Dashboard.prototype.declare_scope_vars = function() {
       this.$scope.config = {};
-      this.$scope.config.searchTime = this.localStorageService.get("searchTime") || 0;
-      return this.$scope.searchTime = this.SEARCH_TIME;
+      this.$scope.searchTime = this.SEARCH_TIME;
+      return this.$scope.config.searchTime = this.localStorageService.get("searchTime") || 0;
     };
 
     Dashboard.prototype.set_listeners = function() {
@@ -322,6 +322,7 @@
       return this.$scope.$watch("config.searchTime", (function(_this) {
         return function(now, then_, scope) {
           var first, iv, last, ts;
+          console.log('passou por aqui 2');
           if (now === 0) {
             ts = Date.now();
             iv = _this.adminUserService.timeInterval();
@@ -352,12 +353,12 @@
         start_date: start_date,
         end_date: end_date
       });
-      return stats.$promise.then(this._parseModel, function(why) {
+      return stats.$promise.then(this.parseModel, function(why) {
         return console.warn(why);
       });
     };
 
-    Dashboard.prototype._parseModel = function(model) {
+    Dashboard.prototype.parseModel = function(model) {
       return console.log(model);
     };
 
