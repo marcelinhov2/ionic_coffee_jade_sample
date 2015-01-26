@@ -107,36 +107,6 @@
 }).call(this);
 
 (function() {
-  var SearchTime;
-
-  SearchTime = (function() {
-    function SearchTime() {
-      return [
-        {
-          interval: 1,
-          label: "Hoje"
-        }, {
-          interval: 7,
-          label: "Semana anterior"
-        }, {
-          interval: 15,
-          label: "Últimos 15 dias"
-        }, {
-          interval: 30,
-          label: "Mês anterior"
-        }
-      ];
-    }
-
-    return SearchTime;
-
-  })();
-
-  angular.module('starter').constant('SEARCH_TIME', SearchTime());
-
-}).call(this);
-
-(function() {
   var App,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -192,6 +162,36 @@
 }).call(this);
 
 (function() {
+  var SearchTime;
+
+  SearchTime = (function() {
+    function SearchTime() {
+      return [
+        {
+          interval: 1,
+          label: "Hoje"
+        }, {
+          interval: 7,
+          label: "Semana anterior"
+        }, {
+          interval: 15,
+          label: "Últimos 15 dias"
+        }, {
+          interval: 30,
+          label: "Mês anterior"
+        }
+      ];
+    }
+
+    return SearchTime;
+
+  })();
+
+  angular.module('starter').constant('SEARCH_TIME', SearchTime());
+
+}).call(this);
+
+(function() {
   var HttpRequestInterceptor;
 
   HttpRequestInterceptor = (function() {
@@ -201,13 +201,10 @@
       this.$rootScope = $rootScope;
       this.localStorageService = localStorageService;
       this.queue = [];
-      this.userData = this.localStorageService.get('user') || {};
       return {
         request: (function(_this) {
           return function(config) {
-            if (_.isEmpty(_this.userData)) {
-              _this.userData = _this.localStorageService.get('user') || {};
-            }
+            _this.userData = _this.localStorageService.get('user') || {};
             _this.queue.push(config);
             _this.isTemplate = config.url.indexOf('.html') > 0;
             _this.$rootScope.$emit('showRequestOverlay', true);

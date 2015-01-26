@@ -1,12 +1,10 @@
 class HttpRequestInterceptor extends Factory
   constructor: (@$q, @$location, @$rootScope, @localStorageService) ->
     @queue = []
-    @userData = @localStorageService.get('user') || {}
 
     return {
       request: (config) =>
-        if _.isEmpty @userData
-          @userData = @localStorageService.get('user') || {}
+        @userData = @localStorageService.get('user') || {}
 
         @queue.push config
 
