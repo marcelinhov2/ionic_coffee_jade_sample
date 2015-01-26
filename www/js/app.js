@@ -4,7 +4,7 @@
 
   App = (function() {
     function App() {
-      return ['ionic', 'templates', 'ngCordova', 'LocalStorageModule'];
+      return ['ionic', 'templates', 'ngCordova', 'ngResource', 'LocalStorageModule'];
     }
 
     return App;
@@ -214,15 +214,16 @@
   var Login;
 
   Login = (function() {
-    function Login($scope) {
-      console.log('login');
+    function Login($scope, loginService) {
+      this.loginService = loginService;
+      console.log(this.loginService);
     }
 
     return Login;
 
   })();
 
-  angular.module('starter').controller('loginController', ['$scope', Login]);
+  angular.module('starter').controller('loginController', ['$scope', 'loginService', Login]);
 
 }).call(this);
 
@@ -266,6 +267,7 @@
       var login;
       this.$resource = $resource;
       this.urlConfigService = urlConfigService;
+      console.log(this.urlConfigService);
       login = this.$resource(this.urlConfigService.api + "/admin_user/", {}, {
         create: {
           method: "POST"
@@ -291,5 +293,46 @@
   })();
 
   angular.module('starter').service('loginService', ['$resource', 'urlConfigService', Login]);
+
+}).call(this);
+
+(function() {
+  var ParseBool;
+
+  ParseBool = (function() {
+    function ParseBool() {
+      return {
+        convert: function(toTest) {
+          return /^true$/i.test(toTest);
+        }
+      };
+    }
+
+    return ParseBool;
+
+  })();
+
+  angular.module('starter').service('parseBoolService', [ParseBool]);
+
+}).call(this);
+
+(function() {
+  var UrlConfig;
+
+  UrlConfig = (function() {
+    function UrlConfig() {
+      return {
+        'environment': 'testing',
+        'api': 'https://api-testing.intelipost.com.br/api/v1',
+        'localApi': 'http://localhost:8080/esprinter-web/api/v1',
+        'testTomcat': 'http://54.207.14.221:31003/api/v1'
+      };
+    }
+
+    return UrlConfig;
+
+  })();
+
+  angular.module('starter').service('urlConfigService', [UrlConfig]);
 
 }).call(this);

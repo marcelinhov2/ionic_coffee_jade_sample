@@ -1,3 +1,3 @@
 class Login extends Controller
-  constructor: ($scope) ->
-    console.log 'login'
+  constructor: ($scope, @loginService) ->
+    console.log @loginService
