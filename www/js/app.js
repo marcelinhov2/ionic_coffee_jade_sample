@@ -61,6 +61,10 @@
         url: '/login',
         templateUrl: '/templates/views/login.html',
         controller: 'loginController'
+      }).state('logout', {
+        url: '/logout',
+        templateUrl: '/templates/views/login.html',
+        controller: 'loginController'
       }).state('sectionmenu', {
         url: '/section',
         abstract: true,

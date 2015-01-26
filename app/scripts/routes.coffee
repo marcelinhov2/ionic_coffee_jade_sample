@@ -7,6 +7,11 @@ class Routes extends Config
         templateUrl: '/templates/views/login.html'
         controller: 'loginController'
 
+      .state 'logout',
+        url: '/logout'
+        templateUrl: '/templates/views/login.html'
+        controller: 'loginController'
+
       # setup an abstract state for the tabs directive
       .state 'sectionmenu',
         url: '/section'
