@@ -239,3 +239,12 @@ libc++abi.dylib: terminating with uncaught exception of type NSException
 2015-01-23 16:50:01.243 myApp[11044:208962] Finished load of: http://192.168.1.143:8100/#/section/dashboard
 2015-01-23 16:50:06.201 myApp[11044:208962] Resetting plugins due to page load.
 2015-01-23 16:50:06.411 myApp[11044:208962] Finished load of: http://192.168.1.143:8100/#/section/dashboard
+2015-01-26 18:24:30.125 myApp[15110:498581] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/D46008DB-A019-4C13-9E67-AED3F274D8E2/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:24:30.261 myApp[15110:498581] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:24:30.270 myApp[15110:498581] Unlimited access to network resources
+2015-01-26 18:24:30.666 myApp[15110:498581] [CDVTimer][keyboard] 0.059009ms
+2015-01-26 18:24:30.721 myApp[15110:498581] [CDVTimer][splashscreen] 55.317998ms
+2015-01-26 18:24:30.721 myApp[15110:498581] [CDVTimer][TotalPluginStartup] 55.709004ms
+2015-01-26 18:24:30.801 myApp[15110:498581] Resetting plugins due to page load.
+2015-01-26 18:24:31.225 myApp[15110:498581] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:25:48.003 myApp[15110:498581] Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen updates.
