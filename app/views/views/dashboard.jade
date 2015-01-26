@@ -1,3 +1,7 @@
 ion-view(title='Dashboard')
   ion-content.has-header.padding
-    h1 Dashboard
+    .list
+      label.item.item-input.item-select
+        .input-label
+          | Período
+        select(ng-model='config.searchTime', required='', ng-options='f.interval as f.label for f in searchTime')

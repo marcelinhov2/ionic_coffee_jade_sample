@@ -288,7 +288,8 @@
 }).call(this);
 
 (function() {
-  var Dashboard;
+  var Dashboard,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Dashboard = (function() {
     function Dashboard($scope, $filter, $location, adminUserService, dashboardService, localStorageService, SEARCH_TIME, urlConfigService) {
@@ -300,8 +301,65 @@
       this.localStorageService = localStorageService;
       this.SEARCH_TIME = SEARCH_TIME;
       this.urlConfigService = urlConfigService;
-      console.log('Dashboard');
+      this._parseModel = __bind(this._parseModel, this);
+      this.define_template_methods = __bind(this.define_template_methods, this);
+      this.set_listeners = __bind(this.set_listeners, this);
+      this.declare_scope_vars = __bind(this.declare_scope_vars, this);
+      this.declare_scope_vars();
+      this.set_listeners();
+      this.define_template_methods();
     }
+
+    Dashboard.prototype.declare_scope_vars = function() {
+      this.$scope.config = {};
+      this.$scope.config.searchTime = this.localStorageService.get("searchTime") || 0;
+      return this.$scope.searchTime = this.SEARCH_TIME;
+    };
+
+    Dashboard.prototype.set_listeners = function() {
+      var _self;
+      _self = this;
+      return this.$scope.$watch("config.searchTime", (function(_this) {
+        return function(now, then_, scope) {
+          var first, iv, last, ts;
+          if (now === 0) {
+            ts = Date.now();
+            iv = _this.adminUserService.timeInterval();
+            if (iv === 0) {
+              iv = 30 * 24 * 60 * 60 * 1000;
+              _this.adminUserService.timeIntervalFirst(ts - iv);
+              _this.adminUserService.timeIntervalLast(ts);
+            }
+            scope.config.searchTime = Math.round(iv / (24 * 60 * 60 * 1000));
+          }
+          ts = Date.now();
+          iv = (now - 1) * 24 * 60 * 60 * 1000;
+          first = _this.$filter("date")(ts - iv, "yyyy-MM-dd");
+          last = _this.$filter("date")(ts, "yyyy-MM-dd");
+          _this.adminUserService.timeIntervalFirst(ts - now * 24 * 60 * 60 * 1000);
+          _this.adminUserService.timeIntervalLast(ts);
+          return _this.get_all_stats(first, last);
+        };
+      })(this));
+    };
+
+    Dashboard.prototype.define_template_methods = function() {};
+
+    Dashboard.prototype.get_all_stats = function(start_date, end_date) {
+      var stats;
+      this.localStorageService.set("searchTime", this.$scope.config.searchTime);
+      stats = this.dashboardService.get_all_stats({
+        start_date: start_date,
+        end_date: end_date
+      });
+      return stats.$promise.then(this._parseModel, function(why) {
+        return console.warn(why);
+      });
+    };
+
+    Dashboard.prototype._parseModel = function(model) {
+      return console.log(model);
+    };
 
     return Dashboard;
 
