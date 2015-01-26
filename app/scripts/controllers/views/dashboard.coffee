@@ -15,8 +15,6 @@ class Dashboard extends Controller
     _self = @
 
     @$scope.$watch "config.searchTime", (now, then_, scope) =>
-      console.log 'passou por aqui 2'
-
       if now is 0
         ts = Date.now()
         iv = @adminUserService.timeInterval()

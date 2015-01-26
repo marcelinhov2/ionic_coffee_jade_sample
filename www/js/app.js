@@ -322,7 +322,6 @@
       return this.$scope.$watch("config.searchTime", (function(_this) {
         return function(now, then_, scope) {
           var first, iv, last, ts;
-          console.log('passou por aqui 2');
           if (now === 0) {
             ts = Date.now();
             iv = _this.adminUserService.timeInterval();
