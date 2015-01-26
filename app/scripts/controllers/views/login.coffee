@@ -48,8 +48,6 @@ class Login extends Controller
     # loginOrCreate = (if (@$scope.isLogin) then @loginService.log else @loginService.create)
     @loginService.log(@$scope.login).$promise.then (data) =>
       if data.status is "OK"
-        console.log data
-
         @localStorageService.set "user", JSON.stringify(data.content)
 
         url = @localStorageService.get("firstUrl") or "/dashboard"
@@ -60,6 +58,8 @@ class Login extends Controller
           @saveEmail()
         else
           @deleteEmail()
+
+        @$location.path "/section/dashboard"
       else
         @handleLoginError data
 

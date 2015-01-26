@@ -296,15 +296,15 @@
         return function(data) {
           var url;
           if (data.status === "OK") {
-            console.log(data);
             _this.localStorageService.set("user", JSON.stringify(data.content));
             url = _this.localStorageService.get("firstUrl") || "/dashboard";
             _this.localStorageService.remove("firstUrl");
             if (_this.$scope.saveEmail) {
-              return _this.saveEmail();
+              _this.saveEmail();
             } else {
-              return _this.deleteEmail();
+              _this.deleteEmail();
             }
+            return _this.$location.path("/section/dashboard");
           } else {
             return _this.handleLoginError(data);
           }

@@ -15,7 +15,7 @@ class App extends Controller
 
   hasUser: ->
     if !@localStorageService.get 'user'
-      @$location.path("/login");
+      @$location.path "/login"
 
   toggleRight: =>
     do @$ionicSideMenuDelegate.toggleRight
