@@ -46,4 +46,4 @@ class Dashboard extends Controller
       console.warn why
 
   parseModel: (model) =>
-    console.log model
+    @$scope.data = model.content

@@ -7266,3 +7266,54 @@ a.button {
 
 div {
   color: red; }
+
+.barList {
+  list-style: none;
+  padding: 0; }
+  .barList li {
+    margin-bottom: 0;
+    overflow: hidden;
+    color: black; }
+  .barList li:nth-child(9n+1) a > span {
+    background: #39c; }
+  .barList li:nth-child(9n+2) a > span {
+    background: #5933cc; }
+  .barList li:nth-child(9n+3) a > span {
+    background: #d65cd6; }
+  .barList li:nth-child(9n+4) a > span {
+    background: #c3c; }
+  .barList li:nth-child(9n+5) a > span {
+    background: #bdadeb; }
+  .barList li:nth-child(9n+6) a > span {
+    background: #5cd699; }
+  .barList li:nth-child(9n+7) a > span {
+    background: #7f33cc; }
+  .barList li:nth-child(9n+8) a > span {
+    background: #a6cc33; }
+  .barList li:nth-child(9n+9) a > span {
+    background: #cc3380; }
+  .barList a {
+    background-color: #eee;
+    border: 1px solid transparent;
+    display: table;
+    width: 100%;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    margin-top: 1%; }
+    .barList a:hover {
+      border: 1px solid #000; }
+    .barList a.clickable {
+      cursor: pointer; }
+    .barList a span {
+      display: table-cell;
+      margin-right: 1%;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px; }
+    .barList a .value {
+      min-width: 50px;
+      padding: 0 2%;
+      display: table-cell;
+      font-style: normal;
+      color: #000; }

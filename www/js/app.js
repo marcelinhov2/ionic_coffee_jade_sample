@@ -358,7 +358,7 @@
     };
 
     Dashboard.prototype.parseModel = function(model) {
-      return console.log(model);
+      return this.$scope.data = model.content;
     };
 
     return Dashboard;
