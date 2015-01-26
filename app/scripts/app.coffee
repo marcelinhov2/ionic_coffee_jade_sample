@@ -1,6 +1,6 @@
-class App extends App
-  constructor: ->
-    return [
-      'ionic',
-      'templates'
-    ]
+class App extends App then constructor: -> return [
+  'ionic',
+  'templates'
+  'ngCordova'
+  'LocalStorageModule'
+]

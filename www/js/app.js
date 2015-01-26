@@ -4,7 +4,7 @@
 
   App = (function() {
     function App() {
-      return ['ionic', 'templates'];
+      return ['ionic', 'templates', 'ngCordova', 'LocalStorageModule'];
     }
 
     return App;
@@ -126,16 +126,42 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
-    function App($scope, $ionicSideMenuDelegate) {
+    function App($scope, $rootScope, $timeout, $location, $ionicSideMenuDelegate, $ionicPlatform, $cordovaSplashscreen, localStorageService) {
       this.$scope = $scope;
+      this.$rootScope = $rootScope;
+      this.$timeout = $timeout;
+      this.$location = $location;
       this.$ionicSideMenuDelegate = $ionicSideMenuDelegate;
+      this.$ionicPlatform = $ionicPlatform;
+      this.$cordovaSplashscreen = $cordovaSplashscreen;
+      this.localStorageService = localStorageService;
       this.toggleRight = __bind(this.toggleRight, this);
       this.defineTemplateMethods = __bind(this.defineTemplateMethods, this);
       this.defineTemplateMethods();
+      this.init();
     }
 
     App.prototype.defineTemplateMethods = function() {
       return this.$scope.toggleRight = this.toggleRight;
+    };
+
+    App.prototype.init = function() {
+      this.$rootScope.$on("$locationChangeStart", (function(_this) {
+        return function(next, current) {
+          return _this.hasUser();
+        };
+      })(this));
+      return this.$ionicPlatform.ready((function(_this) {
+        return function() {
+          return _this.$cordovaSplashscreen.hide();
+        };
+      })(this));
+    };
+
+    App.prototype.hasUser = function() {
+      if (!this.localStorageService.get('user')) {
+        return this.$location.path("/login");
+      }
     };
 
     App.prototype.toggleRight = function() {
@@ -146,7 +172,7 @@
 
   })();
 
-  angular.module('starter').controller('appController', ['$scope', '$ionicSideMenuDelegate', App]);
+  angular.module('starter').controller('appController', ['$scope', '$rootScope', '$timeout', '$location', '$ionicSideMenuDelegate', '$ionicPlatform', '$cordovaSplashscreen', 'localStorageService', App]);
 
 }).call(this);
 
@@ -165,43 +191,6 @@
   })();
 
   angular.module('starter').filter('sample', [Sample]);
-
-}).call(this);
-
-(function() {
-  var Friends;
-
-  Friends = (function() {
-    function Friends() {
-      var friends;
-      friends = [
-        {
-          id: 0,
-          name: 'Scruff McGruff'
-        }, {
-          id: 1,
-          name: 'G.I. Joe'
-        }, {
-          id: 2,
-          name: 'Miss Frizzle'
-        }, {
-          id: 3,
-          name: 'Ash Ketchum'
-        }
-      ];
-      this.all = function() {
-        return friends;
-      };
-      this.get = function(friendId) {
-        return friends[friendId];
-      };
-    }
-
-    return Friends;
-
-  })();
-
-  angular.module('starter').service('friendsService', [Friends]);
 
 }).call(this);
 
@@ -266,5 +255,41 @@
   })();
 
   angular.module('starter').controller('transactionsController', ['$scope', Transactions]);
+
+}).call(this);
+
+(function() {
+  var Login;
+
+  Login = (function() {
+    function Login($resource, urlConfigService) {
+      var login;
+      this.$resource = $resource;
+      this.urlConfigService = urlConfigService;
+      login = this.$resource(this.urlConfigService.api + "/admin_user/", {}, {
+        create: {
+          method: "POST"
+        },
+        log: {
+          method: "POST",
+          url: this.urlConfigService.api + "/admin_user/login/"
+        },
+        password: {
+          method: "POST",
+          url: this.urlConfigService.api + "/user/forgot_password/"
+        }
+      });
+      return {
+        create: login.create,
+        log: login.log,
+        password: login.password
+      };
+    }
+
+    return Login;
+
+  })();
+
+  angular.module('starter').service('loginService', ['$resource', 'urlConfigService', Login]);
 
 }).call(this);
