@@ -11,7 +11,7 @@ ion-view(title='Dashboard')
         | Status de pedidos
       .item.item-text-wrap
         ul.barList
-          li.card(ng-repeat='status in data.dashboard_status_overview.status_array')
+          li(ng-repeat='status in data.dashboard_status_overview.status_array')
             | {{ status.status }}
             a.clickable(ng-click='filterTransactions("state", status.shipment_table_state)')
               span(ng-style='{"width" : ( ( status.amount / data.dashboard_status_overview.total_amount ) * 100 ) + 1 + "%"}')
