@@ -248,3 +248,121 @@ libc++abi.dylib: terminating with uncaught exception of type NSException
 2015-01-26 18:24:30.801 myApp[15110:498581] Resetting plugins due to page load.
 2015-01-26 18:24:31.225 myApp[15110:498581] Finished load of: http://192.168.1.143:8100/#/login
 2015-01-26 18:25:48.003 myApp[15110:498581] Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen updates.
+2015-01-26 18:31:10.365 myApp[15519:502517] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/77CA5064-2BC3-470F-8215-D26097B78A8F/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:31:10.481 myApp[15519:502517] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:31:10.489 myApp[15519:502517] Unlimited access to network resources
+2015-01-26 18:31:10.784 myApp[15519:502517] [CDVTimer][keyboard] 0.068963ms
+2015-01-26 18:31:10.805 myApp[15519:502517] [CDVTimer][splashscreen] 21.421015ms
+2015-01-26 18:31:10.805 myApp[15519:502517] [CDVTimer][TotalPluginStartup] 21.831989ms
+2015-01-26 18:31:10.885 myApp[15519:502517] Resetting plugins due to page load.
+2015-01-26 18:31:11.241 myApp[15519:502517] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:31:22.203 myApp[15519:502517] transaction
+2015-01-26 18:31:23.890 myApp[15519:502517] TransactionDetail
+2015-01-26 18:31:26.776 myApp[15519:502517] transaction
+2015-01-26 18:32:34.426 myApp[15519:502517] Resetting plugins due to page load.
+2015-01-26 18:32:34.681 myApp[15519:502517] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:33:00.338 myApp[15827:504063] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/F30FDB43-0A31-4196-83BC-7FE05BE6E245/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:33:00.448 myApp[15827:504063] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:33:00.456 myApp[15827:504063] Unlimited access to network resources
+2015-01-26 18:33:00.725 myApp[15827:504063] [CDVTimer][keyboard] 0.070989ms
+2015-01-26 18:33:00.749 myApp[15827:504063] [CDVTimer][splashscreen] 24.052978ms
+2015-01-26 18:33:00.750 myApp[15827:504063] [CDVTimer][TotalPluginStartup] 24.488986ms
+2015-01-26 18:33:00.816 myApp[15827:504063] Resetting plugins due to page load.
+2015-01-26 18:33:01.098 myApp[15827:504063] Finished load of: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Bundle/Application/41884895-D825-468C-8710-9DC1AA337048/myApp.app/www/index.html#/login
+2015-01-26 18:33:20.401 myApp[16079:504790] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/20D358A0-9EB3-4C1F-8184-9DB33F999688/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:33:20.518 myApp[16079:504790] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:33:20.526 myApp[16079:504790] Unlimited access to network resources
+2015-01-26 18:33:20.777 myApp[16079:504790] [CDVTimer][keyboard] 0.063002ms
+2015-01-26 18:33:20.796 myApp[16079:504790] [CDVTimer][splashscreen] 18.590987ms
+2015-01-26 18:33:20.796 myApp[16079:504790] [CDVTimer][TotalPluginStartup] 19.014955ms
+2015-01-26 18:33:20.853 myApp[16079:504790] Resetting plugins due to page load.
+2015-01-26 18:33:21.082 myApp[16079:504790] Finished load of: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Bundle/Application/195BD511-6F8A-4E64-8608-37D0960DA371/myApp.app/www/index.html#/login
+2015-01-26 18:33:36.531 myApp[16352:505501] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/8D0DD994-2FB8-4A2F-93F9-76F96D2ADE8B/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:33:36.633 myApp[16352:505501] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:33:36.641 myApp[16352:505501] Unlimited access to network resources
+2015-01-26 18:33:36.872 myApp[16352:505501] [CDVTimer][keyboard] 0.060976ms
+2015-01-26 18:33:36.891 myApp[16352:505501] [CDVTimer][splashscreen] 18.419027ms
+2015-01-26 18:33:36.891 myApp[16352:505501] [CDVTimer][TotalPluginStartup] 18.815994ms
+2015-01-26 18:33:36.949 myApp[16352:505501] Resetting plugins due to page load.
+2015-01-26 18:33:37.173 myApp[16352:505501] Finished load of: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Bundle/Application/76DF8E7B-0877-4500-A04D-AE0EF31BF373/myApp.app/www/index.html#/login
+2015-01-26 18:34:50.789 myApp[16646:506812] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/8676171C-50A5-497E-8520-1EBB23948CD4/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:34:50.950 myApp[16646:506812] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:34:50.956 myApp[16646:506812] Unlimited access to network resources
+2015-01-26 18:34:51.238 myApp[16646:506812] [CDVTimer][keyboard] 0.060976ms
+2015-01-26 18:34:51.266 myApp[16646:506812] [CDVTimer][splashscreen] 28.231978ms
+2015-01-26 18:34:51.266 myApp[16646:506812] [CDVTimer][TotalPluginStartup] 28.755009ms
+2015-01-26 18:34:51.343 myApp[16646:506812] Resetting plugins due to page load.
+2015-01-26 18:34:51.699 myApp[16646:506812] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:35:29.171 myApp[16646:506812] transaction
+2015-01-26 18:35:30.731 myApp[16646:506812] TransactionDetail
+2015-01-26 18:40:57.227 myApp[17005:510466] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/7A317D96-B209-4A98-AE5F-1E2298B92A75/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:40:57.337 myApp[17005:510466] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:40:57.345 myApp[17005:510466] Unlimited access to network resources
+2015-01-26 18:40:57.583 myApp[17005:510466] [CDVTimer][keyboard] 0.058949ms
+2015-01-26 18:40:57.602 myApp[17005:510466] [CDVTimer][splashscreen] 18.764973ms
+2015-01-26 18:40:57.602 myApp[17005:510466] [CDVTimer][TotalPluginStartup] 19.169033ms
+2015-01-26 18:40:57.666 myApp[17005:510466] Resetting plugins due to page load.
+2015-01-26 18:40:57.979 myApp[17005:510466] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:41:49.517 myApp[17005:510466] transaction
+2015-01-26 18:41:51.711 myApp[17005:510466] TransactionDetail
+2015-01-26 18:41:53.942 myApp[17005:510466] transaction
+2015-01-26 18:42:07.370 myApp[17005:510466] TransactionDetail
+2015-01-26 18:42:08.895 myApp[17005:510466] transaction
+2015-01-26 18:42:12.100 myApp[17005:510466] TransactionDetail
+2015-01-26 18:42:15.454 myApp[17005:510466] transaction
+2015-01-26 18:42:54.423 myApp[17005:510466] transaction
+2015-01-26 18:42:56.034 myApp[17005:510466] TransactionDetail
+2015-01-26 18:42:58.515 myApp[17005:510466] transaction
+2015-01-26 18:43:06.604 myApp[17005:510466] transaction
+2015-01-26 18:43:08.146 myApp[17005:510466] TransactionDetail
+2015-01-26 18:43:40.746 myApp[17005:510466] transaction
+2015-01-26 18:46:52.691 myApp[17327:513908] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/520C2A57-623C-4607-9C23-7D33493C1D56/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:46:52.823 myApp[17327:513908] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:46:52.828 myApp[17327:513908] Unlimited access to network resources
+2015-01-26 18:46:53.126 myApp[17327:513908] [CDVTimer][keyboard] 0.104010ms
+2015-01-26 18:46:53.187 myApp[17327:513908] [CDVTimer][splashscreen] 60.535014ms
+2015-01-26 18:46:53.187 myApp[17327:513908] [CDVTimer][TotalPluginStartup] 61.133981ms
+2015-01-26 18:46:53.314 myApp[17327:513908] Resetting plugins due to page load.
+2015-01-26 18:46:53.668 myApp[17327:513908] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:47:17.716 myApp[17327:513908] transaction
+2015-01-26 18:47:34.255 myApp[17624:514961] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/2846AA65-1A16-49BB-9D6C-C063BE8E2E8B/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:47:34.376 myApp[17624:514961] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:47:34.385 myApp[17624:514961] Unlimited access to network resources
+2015-01-26 18:47:34.764 myApp[17624:514961] [CDVTimer][keyboard] 0.108004ms
+2015-01-26 18:47:34.796 myApp[17624:514961] [CDVTimer][splashscreen] 31.386971ms
+2015-01-26 18:47:34.796 myApp[17624:514961] [CDVTimer][TotalPluginStartup] 32.000005ms
+2015-01-26 18:47:34.883 myApp[17624:514961] Resetting plugins due to page load.
+2015-01-26 18:47:35.212 myApp[17624:514961] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:48:14.378 myApp[17624:514961] TransactionDetail
+2015-01-26 18:48:16.170 myApp[17624:514961] transaction
+2015-01-26 18:54:58.782 myApp[17924:518137] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/user/Library/Developer/CoreSimulator/Devices/ACF3B65F-4636-41E8-8A97-A46F5414D292/data/Containers/Data/Application/A96DC65B-FB1B-46EB-A396-40A24304846E/Library/Cookies/Cookies.binarycookies
+2015-01-26 18:54:58.893 myApp[17924:518137] Multi-tasking -> Device: YES, App: YES
+2015-01-26 18:54:58.900 myApp[17924:518137] Unlimited access to network resources
+2015-01-26 18:54:59.167 myApp[17924:518137] [CDVTimer][keyboard] 0.075996ms
+2015-01-26 18:54:59.189 myApp[17924:518137] [CDVTimer][splashscreen] 21.161020ms
+2015-01-26 18:54:59.189 myApp[17924:518137] [CDVTimer][TotalPluginStartup] 21.596014ms
+2015-01-26 18:54:59.286 myApp[17924:518137] Resetting plugins due to page load.
+2015-01-26 18:54:59.592 myApp[17924:518137] Finished load of: http://192.168.1.143:8100/#/login
+2015-01-26 18:55:14.186 myApp[17924:518137] transaction
+2015-01-26 18:55:15.915 myApp[17924:518137] TransactionDetail
+2015-01-26 18:55:37.365 myApp[17924:518137] transaction
+2015-01-26 18:55:38.643 myApp[17924:518137] TransactionDetail
+2015-01-26 18:56:00.574 myApp[17924:518137] transaction
+2015-01-26 18:56:02.096 myApp[17924:518137] TransactionDetail
+2015-01-26 18:56:40.771 myApp[17924:518137] transaction
+2015-01-26 18:56:42.211 myApp[17924:518137] TransactionDetail
+2015-01-26 18:56:54.299 myApp[17924:518137] transaction
+2015-01-26 18:56:55.508 myApp[17924:518137] TransactionDetail
+2015-01-26 18:56:57.073 myApp[17924:518137] transaction
+2015-01-26 18:58:38.040 myApp[17924:518137] transaction
+2015-01-26 18:58:39.494 myApp[17924:518137] TransactionDetail
+2015-01-26 18:58:52.823 myApp[17924:518137] transaction
+2015-01-26 18:58:54.038 myApp[17924:518137] TransactionDetail
+2015-01-26 18:58:55.457 myApp[17924:518137] transaction
+2015-01-26 18:59:35.448 myApp[17924:518137] transaction
+2015-01-26 18:59:36.826 myApp[17924:518137] TransactionDetail
+2015-01-26 19:00:54.026 myApp[17924:518137] transaction
+2015-01-26 19:00:55.286 myApp[17924:518137] TransactionDetail
+2015-01-26 19:00:56.605 myApp[17924:518137] transaction
+2015-01-26 19:01:01.907 myApp[17924:518137] transaction
+2015-01-26 19:01:03.244 myApp[17924:518137] TransactionDetail

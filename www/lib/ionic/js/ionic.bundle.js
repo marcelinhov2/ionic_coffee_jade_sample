@@ -2361,7 +2361,7 @@ window.ionic = {
 })(this, document, ionic);
 
 (function(document, ionic) {
-  'use strict';
+  
 
   // Ionic CSS polyfills
   ionic.CSS = {};
@@ -3026,7 +3026,7 @@ ionic.DomUtil.ready(function(){
 });
 
 (function(document, ionic) {
-  'use strict';
+  
 
   var queueElements = {};   // elements that should get an active state in XX milliseconds
   var activeElements = {};  // elements that are currently active
@@ -3765,7 +3765,7 @@ ionic.Platform.ready(function() {
 });
 
 (function(ionic) {
-'use strict';
+
   ionic.views.View = function() {
     this.initialize.apply(this, arguments);
   };
@@ -6099,7 +6099,7 @@ ionic.scroll = {
 })(ionic);
 
 (function(ionic) {
-'use strict';
+
 
   ionic.views.HeaderBar = ionic.views.View.inherit({
     initialize: function(opts) {
@@ -6194,7 +6194,7 @@ ionic.scroll = {
 })(ionic);
 
 (function(ionic) {
-'use strict';
+
 
   var ITEM_CLASS = 'item';
   var ITEM_CONTENT_CLASS = 'item-content';
@@ -6763,7 +6763,7 @@ ionic.scroll = {
 })(ionic);
 
 (function(ionic) {
-'use strict';
+
 
   ionic.views.Modal = ionic.views.View.inherit({
     initialize: function(opts) {
@@ -6807,7 +6807,7 @@ ionic.scroll = {
 })(ionic);
 
 (function(ionic) {
-'use strict';
+
 
   /**
    * The side menu view handles one of the side menu's in a Side Menu Controller
@@ -6887,7 +6887,7 @@ ionic.scroll = {
 */
 
 (function(ionic) {
-'use strict';
+
 
 ionic.views.Slider = ionic.views.View.inherit({
   initialize: function (options) {
@@ -7482,7 +7482,7 @@ ionic.views.Slider = ionic.views.View.inherit({
 })(ionic);
 
 (function(ionic) {
-'use strict';
+
 
   ionic.views.Toggle = ionic.views.View.inherit({
     initialize: function(opts) {
@@ -7629,7 +7629,7 @@ ionic.views.Slider = ionic.views.View.inherit({
 })(ionic);
 
 (function(ionic) {
-'use strict';
+
   ionic.controllers.ViewController = function(options) {
     this.initialize.apply(this, arguments);
   };
@@ -7646,7 +7646,7 @@ ionic.views.Slider = ionic.views.View.inherit({
 })(window.ionic);
 
 (function(ionic) {
-'use strict';
+
 
 /**
    * The SideMenuController is a controller with a left and/or right menu that
@@ -8122,7 +8122,7 @@ ionic.views.Slider = ionic.views.View.inherit({
    * http://svn.webkit.org/repository/webkit/trunk/Source/WebCore/platform/graphics/UnitBezier.h
    */
   ionic.Animation.Bezier = (function(){
-    'use strict';
+    
 
     /*
      * Duration value to use when one is not specified (400ms is a common value).
@@ -8356,7 +8356,7 @@ ionic.views.Slider = ionic.views.View.inherit({
  * http://www.w3.org/TR/css3-transitions/#transition-timing-function
  */
 var Easing = (function(){
-	'use strict';
+	
 
 	/*
 	 * @const
@@ -9034,7 +9034,7 @@ var Easing = (function(){
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
-(function(window, document, undefined) {'use strict';
+(function(window, document, undefined) {
 
 /**
  * @description
@@ -30715,7 +30715,7 @@ var styleDirective = valueFn({
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
-(function(window, angular, undefined) {'use strict';
+(function(window, angular, undefined) {
 
 /* jshint maxlen: false */
 
@@ -32356,7 +32356,7 @@ angular.module('ngAnimate', ['ng'])
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
-(function(window, angular, undefined) {'use strict';
+(function(window, angular, undefined) {
 
 var $sanitizeMinErr = angular.$$minErr('$sanitize');
 
@@ -33004,7 +33004,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 (function (window, angular, undefined) {
 /*jshint globalstrict:true*/
 /*global angular:false*/
-'use strict';
+
 
 var isDefined = angular.isDefined,
     isFunction = angular.isFunction,

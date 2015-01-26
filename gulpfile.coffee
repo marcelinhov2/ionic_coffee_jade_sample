@@ -48,7 +48,6 @@ gulp.task 'coffee', (done) ->
     .pipe($.jshint(".jshintrc"))
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.concat('app.js'))
-    .pipe($.insert.prepend("'use strict';\n"))
     .pipe(gulp.dest('./www/js'))
     .pipe($.size(showFiles: true))
     #.on('end', done)
