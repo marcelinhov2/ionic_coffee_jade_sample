@@ -1,7 +1,5 @@
 class Login extends Service
   constructor: (@$resource, @urlConfigService) ->
-    console.log @urlConfigService
-
     login = @$resource(@urlConfigService.api + "/admin_user/", {},
       create:
         method: "POST"

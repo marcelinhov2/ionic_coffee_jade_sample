@@ -211,19 +211,122 @@
 }).call(this);
 
 (function() {
-  var Login;
+  var Login,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Login = (function() {
-    function Login($scope, loginService) {
+    function Login($scope, $rootScope, $location, loginService, parseBoolService, localStorageService) {
+      this.$scope = $scope;
+      this.$rootScope = $rootScope;
+      this.$location = $location;
       this.loginService = loginService;
-      console.log(this.loginService);
+      this.parseBoolService = parseBoolService;
+      this.localStorageService = localStorageService;
+      this.requestPassword = __bind(this.requestPassword, this);
+      this.submit = __bind(this.submit, this);
+      this.logout = __bind(this.logout, this);
+      this.deleteEmail = __bind(this.deleteEmail, this);
+      this.saveEmail = __bind(this.saveEmail, this);
+      this.setEmail = __bind(this.setEmail, this);
+      this.setIsLogin = __bind(this.setIsLogin, this);
+      this.define_template_methods = __bind(this.define_template_methods, this);
+      this.declare_scope_vars = __bind(this.declare_scope_vars, this);
+      this.declare_scope_vars();
+      if (this.$location.$$path === "/logout") {
+        this.logout();
+      }
+      this.set_listeners();
+      this.define_template_methods();
+      this.setEmail();
     }
+
+    Login.prototype.set_listeners = function() {
+      return this.$scope.$watch("isLogin", this.setIsLogin);
+    };
+
+    Login.prototype.declare_scope_vars = function() {
+      this.$scope.login = {};
+      this.$scope.forgot = {};
+      return this.$scope.isLogin = this.parseBoolService.convert(this.localStorageService.get("isLogin"));
+    };
+
+    Login.prototype.define_template_methods = function() {
+      this.$scope.submit = this.submit;
+      this.$scope.forgotPassword = this.forgotPassword;
+      this.$scope.closePasswordOverlay = this.closePasswordOverlay;
+      this.$scope.closePwSuccessOverlay = this.closePwSuccessOverlay;
+      return this.$scope.requestPassword = this.requestPassword;
+    };
+
+    Login.prototype.handleLoginError = function(data) {
+      return this.$scope.messages = (data && data.messages ? data.messages : [
+        {
+          text: "connection error"
+        }
+      ]);
+    };
+
+    Login.prototype.setIsLogin = function() {
+      return this.localStorageService.set("isLogin", this.$scope.isLogin);
+    };
+
+    Login.prototype.setEmail = function() {
+      this.$scope.login.email = this.localStorageService.get("lastEmail") || "";
+      if (this.$scope.login.email) {
+        return this.$scope.saveEmail = true;
+      }
+    };
+
+    Login.prototype.saveEmail = function() {
+      return this.localStorageService.set("lastEmail", this.localStorageService.get("user").email);
+    };
+
+    Login.prototype.deleteEmail = function() {
+      return this.localStorageService.remove("lastEmail");
+    };
+
+    Login.prototype.logout = function() {
+      this.setEmail();
+      this.localStorageService.remove("user");
+      return this.$rootScope.$broadcast("logout", [1, 2, 3]);
+    };
+
+    Login.prototype.submit = function() {
+      return this.loginService.log(this.$scope.login).$promise.then((function(_this) {
+        return function(data) {
+          var url;
+          if (data.status === "OK") {
+            console.log(data);
+            _this.localStorageService.set("user", JSON.stringify(data.content));
+            url = _this.localStorageService.get("firstUrl") || "/dashboard";
+            _this.localStorageService.remove("firstUrl");
+            if (_this.$scope.saveEmail) {
+              return _this.saveEmail();
+            } else {
+              return _this.deleteEmail();
+            }
+          } else {
+            return _this.handleLoginError(data);
+          }
+        };
+      })(this));
+    };
+
+    Login.prototype.requestPassword = function() {
+      return this.loginService.password(this.$scope.forgot).$promise.then((function(_this) {
+        return function(data) {
+          _this.$scope.passwordOverlay = false;
+          _this.$scope.pwSuccessOverlay = true;
+          return _this.$scope.forgot.password_forgotten_email = "";
+        };
+      })(this));
+    };
 
     return Login;
 
   })();
 
-  angular.module('starter').controller('loginController', ['$scope', 'loginService', Login]);
+  angular.module('starter').controller('loginController', ['$scope', '$rootScope', '$location', 'loginService', 'parseBoolService', 'localStorageService', Login]);
 
 }).call(this);
 
@@ -267,7 +370,6 @@
       var login;
       this.$resource = $resource;
       this.urlConfigService = urlConfigService;
-      console.log(this.urlConfigService);
       login = this.$resource(this.urlConfigService.api + "/admin_user/", {}, {
         create: {
           method: "POST"

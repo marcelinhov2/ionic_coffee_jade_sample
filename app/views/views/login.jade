@@ -1,5 +1,11 @@
 ion-view
   ion-content.no-header
-    h1 Login
+    form.loginForm(name='loginForm', ng-submit='submit()', autocomplete='off', novalidate='')
+      .list.padding
+        label.item.item-input
+          input#email(ng-model='login.email', name='email', ng-pattern='/.+@[^\.]+\.[^\.]+/', autocorrect='off', autocapitalize='off', autocomplete='off', spellcheck='false', type='email', required='', placeholder="Email")
+        label.item.item-input
+          input#password(ng-model='login.password', name='password', autocorrect='off', autocapitalize='off', autocomplete='off', spellcheck='false', type='password', required='', placeholder="Senha")
 
-    a(href='#/section/dashboard') Dashboard
+      .padding
+        button.button.button-block.button-positive.activated(type='submit', ng-disabled='loginForm.$invalid') Enviar
