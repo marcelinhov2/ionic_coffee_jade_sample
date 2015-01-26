@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.0.0-beta.10",
     "ngCordova": "0.1.11-alpha",
     "angular-local-storage": "latest",
-    "angular-resource": "latest"
+    "angular-resource": "latest",
+    "lodash": "latest"
   }
 }

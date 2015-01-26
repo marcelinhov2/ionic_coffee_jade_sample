@@ -1,5 +1,5 @@
 class Routes extends Config
-  constructor: ($stateProvider, $urlRouterProvider) ->
+  constructor: ($stateProvider, $urlRouterProvider, $httpProvider) ->
     $stateProvider
 
       .state 'login',
@@ -36,3 +36,4 @@ class Routes extends Config
 
     # if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login')
+    $httpProvider.interceptors.push 'HttpRequestInterceptor'

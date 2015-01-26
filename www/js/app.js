@@ -56,7 +56,7 @@
   var Routes;
 
   Routes = (function() {
-    function Routes($stateProvider, $urlRouterProvider) {
+    function Routes($stateProvider, $urlRouterProvider, $httpProvider) {
       $stateProvider.state('login', {
         url: '/login',
         templateUrl: '/templates/views/login.html',
@@ -91,13 +91,14 @@
         }
       });
       $urlRouterProvider.otherwise('/login');
+      $httpProvider.interceptors.push('HttpRequestInterceptor');
     }
 
     return Routes;
 
   })();
 
-  angular.module('starter').config(['$stateProvider', '$urlRouterProvider', Routes]);
+  angular.module('starter').config(['$stateProvider', '$urlRouterProvider', '$httpProvider', Routes]);
 
 }).call(this);
 
@@ -173,6 +174,84 @@
   })();
 
   angular.module('starter').controller('appController', ['$scope', '$rootScope', '$timeout', '$location', '$ionicSideMenuDelegate', '$ionicPlatform', '$cordovaSplashscreen', 'localStorageService', App]);
+
+}).call(this);
+
+(function() {
+  var HttpRequestInterceptor;
+
+  HttpRequestInterceptor = (function() {
+    function HttpRequestInterceptor($q, $location, $rootScope, localStorageService) {
+      this.$q = $q;
+      this.$location = $location;
+      this.$rootScope = $rootScope;
+      this.localStorageService = localStorageService;
+      this.queue = [];
+      this.userData = this.localStorageService.get('user') || {};
+      return {
+        request: (function(_this) {
+          return function(config) {
+            if (_.isEmpty(_this.userData)) {
+              _this.userData = _this.localStorageService.get('user') || {};
+            }
+            _this.queue.push(config);
+            _this.isTemplate = config.url.indexOf('.html') > 0;
+            _this.$rootScope.$emit('showRequestOverlay', true);
+            config.headers.token = _this.userData.token || '';
+            config.headers.production = _this.userData.is_production || false;
+            return config;
+          };
+        })(this),
+        requestError: (function(_this) {
+          return function(rejection) {
+            _this.$rootScope.$emit('showRequestOverlay', false);
+            _.remove(_this.queue, response.config);
+            return _this.$q.reject(rejection);
+          };
+        })(this),
+        response: (function(_this) {
+          return function(response) {
+            _.remove(_this.queue, response.config);
+            if (!_this.isTemplate) {
+              _this.$rootScope.$emit('showFeedback', {
+                success: true,
+                text: response && response.data && typeof response.data === "object" && response.data.messages && response.data.messages.length ? response.data.messages[0].text : void 0
+              });
+            }
+            if (_this.queue.length === 0) {
+              _this.$rootScope.$emit('showRequestOverlay', false);
+            }
+            return response || _this.$q.when(response);
+          };
+        })(this),
+        responseError: (function(_this) {
+          return function(rejection) {
+            _this.$rootScope.$emit('showRequestOverlay', false);
+            _.remove(_this.queue, rejection.config);
+            if (rejection.status === 401) {
+              $location.path("/login");
+              return _this.$q.reject(rejection);
+            }
+            if (!_this.isTemplate) {
+              _this.$rootScope.$emit('showFeedback', {
+                success: false,
+                text: rejection && rejection.data && typeof rejection.data === "object" && rejection.data.messages && rejection.data.messages.length ? rejection.data.messages[0].text : void 0
+              });
+            }
+            if (_this.queue.length === 0) {
+              _this.$rootScope.$emit('showRequestOverlay', false);
+            }
+            return _this.$q.reject(rejection);
+          };
+        })(this)
+      };
+    }
+
+    return HttpRequestInterceptor;
+
+  })();
+
+  angular.module('starter').factory('HttpRequestInterceptor', ['$q', '$location', '$rootScope', 'localStorageService', HttpRequestInterceptor]);
 
 }).call(this);
 
