@@ -6,13 +6,14 @@ ion-view(title='Dashboard')
           | Período
         select(ng-model='config.searchTime', required='', ng-options='f.interval as f.label for f in searchTime')
 
-    .chartBox.contentBorderBox-2
-      header
-        h3
-          | Status de pedidos
-      ul.barList
-        li(ng-repeat='status in data.dashboard_status_overview.status_array')
-          | {{ status.status }}
-          a.clickable(ng-click='filterTransactions("state", status.shipment_table_state)')
-            span(ng-style='{"width" : ( ( status.amount / data.dashboard_status_overview.total_amount ) * 100 ) + 1 + "%"}')
-            i.value {{ status.amount }}
+    .card
+      .item.item-divider
+        | Status de pedidos
+      .item.item-text-wrap
+        ul.barList
+          li.card(ng-repeat='status in data.dashboard_status_overview.status_array')
+            | {{ status.status }}
+            a.clickable(ng-click='filterTransactions("state", status.shipment_table_state)')
+              span(ng-style='{"width" : ( ( status.amount / data.dashboard_status_overview.total_amount ) * 100 ) + 1 + "%"}')
+              i.value {{ status.amount }}
+      
