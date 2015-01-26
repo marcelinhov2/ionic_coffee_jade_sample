@@ -103,22 +103,32 @@
 }).call(this);
 
 (function() {
-  var HttpStatusCodes;
+  var SearchTime;
 
-  HttpStatusCodes = (function() {
-    function HttpStatusCodes() {
-      return {
-        '401': 'Unauthorized',
-        '403': 'Forbidden',
-        '404': 'Not Found'
-      };
+  SearchTime = (function() {
+    function SearchTime() {
+      return [
+        {
+          interval: 1,
+          label: "Hoje"
+        }, {
+          interval: 7,
+          label: "Semana anterior"
+        }, {
+          interval: 15,
+          label: "Últimos 15 dias"
+        }, {
+          interval: 30,
+          label: "Mês anterior"
+        }
+      ];
     }
 
-    return HttpStatusCodes;
+    return SearchTime;
 
   })();
 
-  angular.module('starter').constant('HTTP_STATUS_CODES', HttpStatusCodes());
+  angular.module('starter').constant('SEARCH_TIME', SearchTime());
 
 }).call(this);
 
@@ -277,7 +287,15 @@
   var Dashboard;
 
   Dashboard = (function() {
-    function Dashboard($scope) {
+    function Dashboard($scope, $filter, $location, adminUserService, dashboardService, localStorageService, SEARCH_TIME, urlConfigService) {
+      this.$scope = $scope;
+      this.$filter = $filter;
+      this.$location = $location;
+      this.adminUserService = adminUserService;
+      this.dashboardService = dashboardService;
+      this.localStorageService = localStorageService;
+      this.SEARCH_TIME = SEARCH_TIME;
+      this.urlConfigService = urlConfigService;
       console.log('Dashboard');
     }
 
@@ -285,7 +303,7 @@
 
   })();
 
-  angular.module('starter').controller('dashboardController', ['$scope', Dashboard]);
+  angular.module('starter').controller('dashboardController', ['$scope', '$filter', '$location', 'adminUserService', 'dashboardService', 'localStorageService', 'SEARCH_TIME', 'urlConfigService', Dashboard]);
 
 }).call(this);
 
@@ -438,6 +456,153 @@
   })();
 
   angular.module('starter').controller('transactionsController', ['$scope', Transactions]);
+
+}).call(this);
+
+(function() {
+  var AdminUser;
+
+  AdminUser = (function() {
+    function AdminUser($resource, $filter, urlConfigService, localStorageService) {
+      var admin, update;
+      this.$resource = $resource;
+      this.$filter = $filter;
+      this.urlConfigService = urlConfigService;
+      this.localStorageService = localStorageService;
+      admin = this.$resource(this.urlConfigService.api + "/admin_user/:admin_user_id", {}, {
+        query: {
+          method: "GET",
+          params: {
+            admin_user_id: "@admin_user_id"
+          }
+        },
+        create: {
+          method: "POST"
+        },
+        update: {
+          method: "PUT",
+          params: {
+            admin_user_id: "@admin_user"
+          }
+        },
+        remove: {
+          method: "DELETE"
+        }
+      });
+      update = function(id, user) {
+        var _user;
+        _user = user;
+        this.localStorageService.set('user', JSON.stringify(user));
+        return admin.update.call(this, id, user);
+      };
+      return {
+        query: admin.query,
+        create: admin.create,
+        update: update,
+        remove: admin.remove,
+        getTimezoneOffset: (function(_this) {
+          return function() {
+            var _user;
+            if (_user === (null || void 0)) {
+              _user = _this.localStorageService.get('user');
+            }
+            if ("time_zone_offset" in _user) {
+              return _user.time_zone_offset;
+            } else {
+              return -3.0;
+            }
+          };
+        })(this),
+        timeIntervalFirst: (function(_this) {
+          return function(ts) {
+            var _user;
+            if (_user === (null || void 0)) {
+              _user = _this.localStorageService.get('user');
+            }
+            if (typeof ts === "number" && ts > 0) {
+              _user.time_interval_first = ts;
+            }
+            if ("time_interval_first" in _user) {
+              return _user.time_interval_first;
+            } else {
+              return 0;
+            }
+          };
+        })(this),
+        timeIntervalLast: (function(_this) {
+          return function(ts) {
+            var _user;
+            if (_user === (null || void 0)) {
+              _user = _this.localStorageService.get('user');
+            }
+            if (typeof ts === "number" && ts > 0) {
+              _user.time_interval_last = ts;
+            }
+            if ("time_interval_last" in _user) {
+              return _user.time_interval_last;
+            } else {
+              return 0;
+            }
+          };
+        })(this),
+        timeInterval: (function(_this) {
+          return function() {
+            var _user;
+            if (_user === (null || void 0)) {
+              _user = _this.localStorageService.get('user');
+            }
+            if (("time_interval_first" in _user) && ("time_interval_last" in _user)) {
+              return _user.time_interval_last - _user.time_interval_first;
+            } else {
+              return 0;
+            }
+          };
+        })(this),
+        utcTsToUserTime: (function(_this) {
+          return function(ts, format) {
+            var date, dms, offset;
+            format = (format === undefined ? "dd/MM/yyyy HH:mm" : String(format));
+            offset = _this.getTimezoneOffset() + new Date().getTimezoneOffset() / 60;
+            dms = offset * 3600000;
+            date = new Date(ts + dms);
+            return _this.$filter("date")(date, format);
+          };
+        })(this)
+      };
+    }
+
+    return AdminUser;
+
+  })();
+
+  angular.module('starter').service('adminUserService', ['$resource', '$filter', 'urlConfigService', 'localStorageService', AdminUser]);
+
+}).call(this);
+
+(function() {
+  var Dashboard;
+
+  Dashboard = (function() {
+    function Dashboard($resource, urlConfigService) {
+      var dashboard;
+      this.$resource = $resource;
+      this.urlConfigService = urlConfigService;
+      dashboard = this.$resource(this.urlConfigService.api + "/dashboard/", {}, {
+        get_all_stats: {
+          method: "GET",
+          url: this.urlConfigService.api + "/dashboard/all_stats/:start_date/:end_date/"
+        }
+      });
+      return {
+        get_all_stats: dashboard.get_all_stats
+      };
+    }
+
+    return Dashboard;
+
+  })();
+
+  angular.module('starter').service('dashboardService', ['$resource', 'urlConfigService', Dashboard]);
 
 }).call(this);
 
